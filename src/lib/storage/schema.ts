@@ -6,7 +6,9 @@ import { assessmentSchema } from "@/features/assessment/schema";
  * Only raw inputs, choices, attempts and progress are stored. Results pages
  * are recomputed from these inputs by the engine every time.
  */
-export const STORAGE_KEY = "pivotready:state";
+export const STORAGE_KEY = "shifto:state";
+/** Keys used by earlier builds (product was renamed); migrated on first load. */
+export const LEGACY_STORAGE_KEYS = ["pivotready:state"];
 export const CURRENT_VERSION = 1;
 export const MAX_EVENTS = 300;
 
@@ -40,7 +42,8 @@ const planItemSchema = z.object({
   skill: z.string().optional(),
   moduleId: z.string().optional(),
   href: z.string().optional(),
-  access: z.enum(["free", "blueprint", "plus"]),
+  // "blueprint" is the pre-rename name of the one-time tier (now Skill Journey).
+  access: z.enum(["free", "blueprint", "journey", "plus"]).transform((a) => (a === "blueprint" ? "journey" : a)),
 });
 
 const attemptSchema = z.object({

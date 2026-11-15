@@ -4,6 +4,7 @@ import { AdaptationLoop } from "@/components/adaptation-loop";
 import { PathGlyph } from "@/components/brand";
 import { Badge, ButtonLink, Card, Container, Eyebrow, SectionTitle } from "@/components/ui";
 import { LandingCtas, PathPreview, TrustList } from "@/features/landing/landing";
+import { PLANS } from "@/features/billing/plans";
 import { PATHS } from "@/lib/data/paths";
 import { CATEGORY_META, TASKS } from "@/lib/data/tasks";
 import type { TaskCategory } from "@/types";
@@ -47,11 +48,11 @@ export default function HomePage() {
               For customer support professionals in the US
             </Badge>
             <h1 className="font-display text-[2.6rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.25rem]">
-              Your career has options.{" "}
-              <span className="text-gradient">Build them before you need them.</span>
+              Work is shifting.{" "}
+              <span className="text-gradient">So can you.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-              AI is changing which tasks fill your workday. PIVOTREADY shows which of your tasks are shifting, which skills
+              AI is changing which tasks fill your workday. shifto shows which of your tasks are shifting, which skills
               already transfer, and three practical moves you can make, then lets you practice the skill that matters
               most.
             </p>
@@ -199,9 +200,9 @@ export default function HomePage() {
           />
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
-              { name: "Free Career Check", price: "$0", note: "Task map, three paths, first challenge" },
-              { name: "Career Transition Blueprint", price: "$24.99", note: "One-time: full 14-day roadmap + savable report" },
-              { name: "PIVOTREADY Plus", price: "$9.99/mo", note: "Blueprint included + weekly Skill Sprints" },
+              { name: PLANS.free.name, price: PLANS.free.price, note: PLANS.free.summary },
+              { name: PLANS.journey.name, price: `${PLANS.journey.price} one-time`, note: PLANS.journey.summary },
+              { name: PLANS.plus.name, price: `${PLANS.plus.price}/mo`, note: PLANS.plus.summary },
             ].map((t) => (
               <Card key={t.name}>
                 <p className="text-sm font-semibold text-soft">{t.name}</p>
@@ -222,7 +223,7 @@ export default function HomePage() {
       <section className="py-16 sm:py-20">
         <Container className="grid gap-4 lg:grid-cols-2">
           <Card>
-            <h2 className="font-display text-xl font-bold">What PIVOTREADY is not</h2>
+            <h2 className="font-display text-xl font-bold">What shifto is not</h2>
             <ul className="mt-4 space-y-2.5 text-sm text-muted">
               {[
                 "Not a prediction of whether you'll lose your job.",
